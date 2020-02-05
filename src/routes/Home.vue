@@ -1,18 +1,19 @@
 <template>
-  <div class="home">
-    <h1>Home</h1>
+  <div>
+    <Menu :opened="true"/>
+    <Bar/>
   </div>
 </template>
 <script>
+import Menu from '../components/Menu'
+import Bar from '../components/Bar'
 export default {
   name: 'home',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
+  components: {
+    Menu,
+    Bar
   }
 }
 </script>
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 </style>
