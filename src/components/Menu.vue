@@ -1,118 +1,48 @@
 <template>
-  <nav class="canvas" v-bind:class="opened ? 'opened' : ''">
-    <ul>
-      <li>
-        <div>
-          <i><i class="avatar"></i></i>
-          <p class="head">Marcus Felix</p>
-        </div>
-      </li>
-      <li><br/></li>
-      <li>
-        <div>
-          <i class="mdi mdi-pencil"></i>
-          <p>Administrativo</p>
-          <i class="mdi mdi-chevron-down"></i>
-        </div>
-        <ul>
-          <li>
-            <div>
-              <i class="mdi mdi-square-small"></i>
-              <p>Sistema</p>
-              <i class="mdi mdi-chevron-up"></i>
+  <div v-bind:class="opened ? 'opened' : ''" class="canvas">
+    <div class="overlay" @click="$emit('change-menu')"></div>
+    <nav>
+      <ul>
+        <li>
+          <div>
+            <i><i class="avatar"></i></i>
+            <p class="head">Marcus Felix</p>
+          </div>
+        </li>
+        <li><br/></li>
+        <li v-for="(item, index) in menu" :key="index">
+          <router-link :to="{ name: item.route, params: {}}">
+            <div @click="item.active = !item.active">
+              <i class="mdi" v-bind:class="item.icon"></i>
+              <p>{{item.name}}</p>
+              <i v-if="item.sub != null" class="mdi" v-bind:class="item.active ? 'mdi-chevron-up' : 'mdi-chevron-down'"></i>
             </div>
-            <ul>
-              <li>
-                <div>
-                  <i class="mdi mdi-square-small"></i>
-                  <p>Programas</p>
+          </router-link>
+          <ul v-bind:class="item.active ? '' : 'v-hidden'" >
+            <li v-for="(subitem, index) in item.sub" :key="index">
+              <router-link :to="{ name: subitem.route, params: {}}">
+                <div @click="subitem.active = !subitem.active">
+                  <i class="mdi" v-bind:class="subitem.sub != null ? 'mdi-plus' : 'mdi-square-small'"></i>
+                  <p>{{subitem.name}}</p>
+                  <i v-if="subitem.sub != null" class="mdi" v-bind:class="subitem.active ? 'mdi-chevron-up' : 'mdi-chevron-down'"></i>
                 </div>
-              </li>
-              <li>
-                <div>
-                  <i class="mdi mdi-square-small"></i>
-                  <p>Agenda Online</p>
-                </div>
-              </li>
-              <li>
-                <div>
-                  <i class="mdi mdi-square-small"></i>
-                  <p>Domínios</p>
-                </div>
-              </li>
-            </ul>
-            <div>
-              <i class="mdi mdi-square-small"></i>
-              <p>Operadora</p>
-              <i class="mdi mdi-chevron-down"></i>
-            </div>
-            <div>
-              <i class="mdi mdi-square-small"></i>
-              <p>Autorizador</p>
-              <i class="mdi mdi-chevron-down"></i>
-            </div>
-          </li>
-        </ul>
-        
-      </li>
-      <li>
-        <div>
-          <i class="mdi mdi-folder"></i>
-          <p>Configurações</p>
-          <i class="mdi mdi-chevron-down"></i>
-        </div>
-      </li>
-      <li>
-        <div>
-          <i class="mdi mdi-account"></i>
-          <p>Atendimento</p>
-          <i class="mdi mdi-chevron-down"></i>
-        </div>
-      </li>
-      <li>
-        <div>
-          <i class="mdi mdi-cash-usd"></i>
-          <p>Faturamento</p>
-          <i class="mdi mdi-chevron-down"></i>
-        </div>
-      </li>
-      <li>
-        <div>
-          <i class="mdi mdi-chart-pie"></i>
-          <p>Relatórios</p>
-          <i class="mdi mdi-chevron-down"></i>
-        </div>
-      </li>
-      <li>
-        <div>
-          <i class="mdi mdi-shield-alert"></i>
-          <p>Auditoria</p>
-          <i class="mdi mdi-chevron-down"></i>
-        </div>
-      </li>
-      <li>
-        <div>
-          <i class="mdi mdi-merge"></i>
-          <p>Integração</p>
-          <i class="mdi mdi-chevron-down"></i>
-        </div>
-      </li>
-      <li>
-        <div>
-          <i class="mdi mdi-message"></i>
-          <p>Recados</p>
-          <i class="mdi mdi-chevron-down"></i>
-        </div>
-      </li>
-      <li>
-        <div>
-          <i class="mdi mdi-folder"></i>
-          <p>Venda</p>
-          <i class="mdi mdi-chevron-down"></i>
-        </div>
-      </li>
-    </ul>
-  </nav>
+              </router-link>
+              <ul v-bind:class="subitem.active ? '' : 'v-hidden'">
+                <li v-for="(subsubitem, index) in subitem.sub" :key="index">
+                  <router-link :to="{ name: subsubitem.route, params: {}}">
+                    <div>
+                      <i class="mdi mdi-square-small"></i>
+                      <p>{{subsubitem.name}}</p>
+                    </div>
+                  </router-link>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
 </template>
 
 <script>
@@ -120,11 +50,103 @@ export default {
   name: 'Menu',
   props: {
     opened: Boolean
-  }
+  },
+  data: () => ({
+    menu: [
+      {
+        "name": "Atendimento",
+        "icon": "mdi-pencil",
+        "active": false,
+        "sub": [
+          {
+            "name": "Sistema",
+            "active": false,
+            "sub": [
+              {
+                "name": "Programas",
+                "route": "programas"
+              },
+              {
+                "name": "Agenda Online",
+                "route": ""
+              },
+              {
+                "name": "Domínios",
+                "route": ""
+              },
+            ]
+          },
+          {
+            "name": "Operadora",
+            "route": ""
+          },
+          {
+            "name": "Autorizador",
+            "route": ""
+          }
+        ]
+      },
+      {
+        "name": "Configurações",
+        "icon": "mdi-folder",
+        "route": ""
+      },
+      {
+        "name": "Atendimento",
+        "icon": "mdi-account",
+        "route": ""
+      },
+      {
+        "name": "Faturamento",
+        "icon": "mdi-cash-usd",
+        "route": ""
+      },
+      {
+        "name": "Relatórios",
+        "icon": "mdi-chart-pie",
+        "route": ""
+      },
+      {
+        "name": "Auditoria",
+        "icon": "mdi-shield-alert",
+        "route": ""
+      },
+      {
+        "name": "Integração",
+        "icon": "mdi-merge",
+        "route": ""
+      },
+      {
+        "name": "Recados",
+        "icon": "mdi-message",
+        "route": ""
+      },
+      {
+        "name": "Venda",
+        "icon": "mdi-folder",
+        "route": ""
+      }
+    ]
+  })
 }
 </script>
 
 <style scoped>
+  .overlay {
+    background-color: rgba(0,0,0,0.3);
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: -330px;
+    bottom: 0;
+    opacity: 0;
+    transition: opacity 400ms ease-in-out;
+  }
+  .opened .overlay {
+    right: 0;
+    left: 0;
+    opacity: 1;
+  }
   nav {
     position: fixed;
     z-index: 1;
@@ -134,16 +156,24 @@ export default {
     background-color: #233646;
     color: #a7b1c2;
     overflow: hidden;
-    padding: 15px 0;
-    overflow-y: auto 
+    padding: 16px 0px 0px 0px;
+    overflow-y: auto;
+    transition: left 150ms ease-in-out;
   }
-  nav.opened {
+  .opened nav {
     left: 0
   }
   ul {
     width: 300px;
     margin: 0;
-    padding: 0
+    padding: 0;
+    overflow: hidden;
+    max-height: 1000px;
+    transition: max-height 600ms ease-in-out;
+  }
+  ul.v-hidden {
+    max-height: 0px;
+    transition: max-height 600ms ease-in-out;
   }
   ul li {
     margin: 0;
@@ -154,12 +184,16 @@ export default {
     padding: 0px;
     cursor: pointer;
   }
+  ul li a {
+    color: inherit;
+    text-decoration: none
+  }
   ul li div {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    padding: 0px 15px;
+    padding: 0px 16px;
   }
   ul li div:hover {
     color: #FFF;
@@ -184,17 +218,27 @@ export default {
     border-radius: 25px
   }
   li p {
-    margin: 0px 15px;
-    flex: 1
+    margin: 0px 16px;
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .head {
     font-size: 1.1em;
     font-weight: 700
   }
   .mdi {
-    font-size: 1.4em
+    font-size: 1.6em
   }
-  .mdi-square-small {
+  ul li ul li .mdi {
     opacity: 0.3;
+  }
+  .footer {
+    font-size: 0.9em;
+    margin-top: 42px;
+    padding: 8px 8px 8px 32px;
+    background-color: #233646;
+    border-top: 1px solid #4a4f58
   }
 </style>

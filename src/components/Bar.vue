@@ -1,11 +1,25 @@
 <template>
   <nav>
     <ul>
-      <li>
+      <li class="link" @click="$emit('change-menu')">
         <i class="mdi mdi-menu"></i>
       </li>
-      <li>
-        <img src="../assets/logo-black.png" class="logo"/>
+      <router-link :to="{ name: 'home', params: {}}">
+        <li>
+          <img src="../assets/logo-black.png" class="logo"/>
+        </li>
+      </router-link>
+      <li class="flex">
+        <input class="flex" type="text" placeholder="Busca no sistema"/>
+      </li>
+      <li class="link sub">
+        <i class="mdi mdi-map-marker"></i>
+      </li>
+      <li class="link sub">
+        <i class="mdi mdi-phone-classic"></i>
+      </li>
+      <li class="link sub">
+        <i class="mdi mdi-bell"></i>
       </li>
     </ul>
   </nav>
@@ -13,18 +27,20 @@
 
 <script>
 export default {
-  name: 'Menu',
-  props: {
-    msg: String
-  }
+  name: 'Bar',
 }
 </script>
 
 <style scoped>
   nav {
     height: 60px;
+    background-color: #FFFFFF;
     border-bottom: 1px solid #DDD;
-    padding: 0px 15px
+    padding: 0px 15px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
   }
   .logo {
     opacity: 0.5;
@@ -37,15 +53,32 @@ export default {
   }
   ul li {
     margin: 0;
-    padding: 0;
+    padding: 0px 15px;
     list-style: none;
     height: 60px;
     display: flex;
     align-items: center;
-    margin: 0px 15px
+  }
+  ul li.link {
+    cursor: pointer;
+  }
+  ul li.link.sub {
+    color: #999999
   }
   .mdi {
     font-size: 1.4em
+  }
+  .mdi-menu {
+    font-size: 1.8em
+  }
+  .flex {
+    display: flex;
+    flex: 1
+  }
+  input {
+    padding: 15px;
+    font-size: 1em;
+    border: none
   }
   
 </style>
