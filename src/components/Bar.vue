@@ -10,6 +10,7 @@
         </li>
       </router-link>
       <li class="flex">
+        <i class="mdi mdi-magnify"></i>
         <input class="flex" type="text" placeholder="Busca no sistema"/>
       </li>
       <li class="link sub">
