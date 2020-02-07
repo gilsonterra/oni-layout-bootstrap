@@ -6,7 +6,7 @@
       </li>
       <router-link :to="{ name: 'home', params: {}}">
         <li>
-          <img src="../assets/logo-black.png" class="logo"/>
+          <img src="../assets/logo.png" class="logo"/>
         </li>
       </router-link>
       <li class="flex">
@@ -43,7 +43,7 @@ export default {
     right: 0;
   }
   .logo {
-    opacity: 0.5;
+    opacity: 1;
   }
   ul {
     margin: 0;

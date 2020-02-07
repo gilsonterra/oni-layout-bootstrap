@@ -136,7 +136,7 @@ export default {
     background-color: rgba(0,0,0,0.3);
     position: fixed;
     z-index: 1;
-    top: 0;
+    top: 60px;
     left: -330px;
     bottom: 0;
     opacity: 0;
@@ -150,11 +150,11 @@ export default {
   nav {
     position: fixed;
     z-index: 1;
-    top: 0;
+    top: 60px;
     left: -330px;
     bottom: 0;
-    background-color: #233646;
-    color: #a7b1c2;
+    background-color: #003300;
+    color: #dcedc8;
     overflow: hidden;
     padding: 16px 0px 0px 0px;
     overflow-y: auto;
@@ -186,7 +186,6 @@ export default {
   }
   ul li a {
     color: inherit;
-    text-decoration: none
   }
   ul li div {
     display: flex;
