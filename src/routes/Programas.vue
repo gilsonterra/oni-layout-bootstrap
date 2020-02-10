@@ -6,7 +6,89 @@
           <List :list="list" @on-selected="onSelected"/>
         </div>
         <div class="col-sm-8 col-lg-9 scroll">
-          <div v-if="selected != null">1</div>
+          <div class="container-fluid" v-if="selected != null">
+            <div class="row">
+              <div class="col-md-12">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                  <div class="collapse navbar-collapse">
+                    <div class="navbar-nav">
+                      <a class="nav-item nav-link" @click="mode = 'dados'" v-bind:class="mode == 'dados' ? 'active' : ''" href="javascript: void()">Dados</a>
+                      <a class="nav-item nav-link" @click="mode = 'perfil'" v-bind:class="mode == 'perfil' ? 'active' : ''" href="javascript: void()">Perfil</a>
+                    </div>
+                  </div>
+                  <form class="navbar-form navbar-right">
+                    <div class="btn-group" role="group" aria-label="...">
+                      <button type="button" class="btn btn-secondary">Limpar</button>
+                      <button type="button" class="btn btn-primary">Salvar</button>
+                    </div>
+                  </form>
+                </nav>
+                <div class="alert alert-danger" role="alert"><strong>Erro:</strong> Alguns campos obrigatórios precisam ser preenchidos para continuar</div>
+              </div>
+            </div>
+            <div class="row form" v-if="mode == 'dados'">
+              <div class="col-md-6">
+                <form>
+                  <div class="form-group">
+                    <label>Modulo</label>
+                    <select class="form-control is-invalid"></select>
+                    <span class="invalid-feedback">Campo obrigatório</span>
+                  </div>
+                  <div class="form-group">
+                    <label>Diretório</label>
+                    <input class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label>Descrição</label>
+                    <textarea class="form-control" rows="5"></textarea>
+                  </div>
+                </form>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Tipo de View</label>
+                  <select class="form-control">
+                    <option>jQuery</option>
+                    <option>Dojo</option>
+                    <option>Vue</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <div class="form-group">
+                    <label>Ícone</label>
+                    <input class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Opções</label>
+                  <div class="checkbox">
+                    <i class="mdi mdi-checkbox-marked-outline active"></i>
+                    <span>Mesclar perfil</span>
+                  </div>
+                  <div class="checkbox">
+                    <i class="mdi mdi-checkbox-blank-outline"></i>
+                    <span>Auditoria específica</span>
+                  </div>
+                  <div class="checkbox">
+                    <i class="mdi mdi-checkbox-blank-outline"></i>
+                    <span>Ícone no desktop</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row form" v-if="mode == 'perfil'">
+              <div class="col-md-6">
+                <div class="list-group">
+                  <li class="list-group-item list-group-item-primary">Adminstrativo <span class="float-right"><i class="mdi mdi-check-bold"></i></span></li>
+                  <li class="list-group-item">Prestador</li>
+                  <li class="list-group-item">Operadora </li>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="help">Selecione ao lado os perfis autorizados a acessarem este programa</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -20,7 +102,8 @@ export default {
     List
   },
   data: () => ({
-    selected: null,
+    mode: "dados",
+    selected: {},
     list: [
       {
         "name": "Acesso a dados da base externa",
@@ -35,8 +118,7 @@ export default {
     ]
   }),
   methods: {
-    onSelected: (value) => {
-      window.console.log(value)
+    onSelected(value) {
       this.selected = value;
       this.list.map((i) => {
         if(i.url == value.url){
@@ -60,6 +142,10 @@ export default {
   height: calc(100vh - 60px);
   padding: 0px
 }
-
-
+.form {
+  padding: 16px 0px
+}
+.navbar {
+  margin: 16px 0px;
+}
 </style>

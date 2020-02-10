@@ -1,0 +1,51 @@
+body {
+  margin: 0;
+}
+a, a:hover, a:link, a:active, a:visited {
+  text-decoration: none;
+}
+:focus {
+  outline: 0;
+}
+.nopadding {
+  padding: 0px;
+}
+.nomargin {
+  margin: 0px;
+}
+.float-right {
+  float: right;
+}
+.float-left {
+  float: left;
+}
+
+.navbar.navbar-light {
+  border: 1px solid #DDD;
+  border-radius: 5px;
+  padding-right: 9px;
+}
+.form .checkbox span {
+  position: relative;
+  top: -3px;
+}
+.form .checkbox .mdi {
+  margin-right: 8px;
+  font-size: 1.6em
+}
+.form .checkbox .mdi.active {
+  color: rgb(0, 113, 47);
+}
+.form .checkbox .mdi {
+  color: #999
+}
+
+.form .help {
+  color: #999;
+  padding: 16px 0;
+}
+
+.form label {
+  font-size: 0.8rem;
+  color: #999
+}

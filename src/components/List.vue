@@ -3,7 +3,7 @@
     <div class="search">
       <input type="text" placeholder="Busca" />
     </div>
-    <a @click="$emit('on-selected')" class="list-item" v-bind:class="item.active ? 'active' : ''" v-for="(item, index) in list" :key="index">
+    <a @click="$emit('on-selected', item)" class="list-item" v-bind:class="item.active ? 'active' : ''" v-for="(item, index) in list" :key="index">
       <!--<i class="mdi mdi-pencil"></i>-->
       <div>
         <p>{{item.name}}</p>
@@ -30,7 +30,7 @@ export default {
   display: flex;
   color: inherit;
   padding: 8px 16px;
-  margin: 4px 8px;
+  margin: 4px 16px;
   min-height: 50px;
   flex-direction: row;
   align-items: center;
@@ -42,7 +42,7 @@ export default {
   font-size: 18px
 }
 .list-item div {
-  flex: 1
+  width: 100%;
 }
 .list-item .mdi.trailing {
   padding: 0px
@@ -52,7 +52,7 @@ export default {
 }
 .list-item.active {
   background-color: #00c853;
-  color: #FFF
+  color: #FFF !important
 }
 .list-item p {
   margin: 0;

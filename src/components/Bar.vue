@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <ul>
+    <ul class="">
       <li class="link" @click="$emit('change-menu')">
         <i class="mdi mdi-menu"></i>
       </li>
@@ -42,6 +42,9 @@ export default {
     top: 0;
     left: 0;
     right: 0;
+  }
+  nav .container {
+    margin: 0 auto;
   }
   .logo {
     opacity: 1;

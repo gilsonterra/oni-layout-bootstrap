@@ -164,7 +164,7 @@ export default {
     left: 0
   }
   ul {
-    width: 300px;
+    width: 270px;
     margin: 0;
     padding: 0;
     overflow: hidden;
