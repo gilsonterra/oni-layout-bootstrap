@@ -97,9 +97,23 @@ export default {
         "route": ""
       },
       {
-        "name": "Faturamento",
+        "name": "Financeiro",
         "icon": "mdi-cash-usd",
-        "route": ""
+        "active": false,
+        "sub": [
+          {
+            "name": "Resumo",
+            "route": "financeiroresumo"
+          },
+          {
+            "name": "Contas a pagar",
+            "route": "contaspagar"
+          },
+          {
+            "name": "Contas a receber",
+            "route": "contasreceber"
+          },
+        ]
       },
       {
         "name": "Relatórios",

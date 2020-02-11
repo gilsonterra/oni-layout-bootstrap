@@ -49,3 +49,8 @@ a, a:hover, a:link, a:active, a:visited {
   font-size: 0.8rem;
   color: #999
 }
+
+.iconlink {
+  font-size: 1em;
+  padding: 0px 10px;
+}
