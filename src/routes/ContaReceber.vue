@@ -6,7 +6,7 @@
           <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="collapse navbar-collapse">
               <div class="navbar-nav">
-                <a class="navbar-brand">Conta a pagar</a>
+                <a class="navbar-brand">Conta a receber</a>
               </div>
             </div>
             <form class="navbar-form navbar-right">
@@ -82,7 +82,7 @@
 </template>
 <script>
 export default {
-  name: "contaspagar",
+  name: "contareceber",
   components: {
     
   },
@@ -121,7 +121,8 @@ export default {
   overflow-y: auto;
   height: calc(100vh);
 }
-.scroll { 
+.scroll {
+  
   padding: 0px
 }
 .navbar {

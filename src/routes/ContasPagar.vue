@@ -78,6 +78,9 @@ export default {
 .tableview {
   margin: 15px;
 }
+.tableview a {
+  color: black
+}
 .navbar {
   margin: 16px 0px;
 }
