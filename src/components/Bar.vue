@@ -13,15 +13,26 @@
         <i class="mdi mdi-magnify"></i>
         <input class="flex" type="text" placeholder="Busca no sistema"/>
       </li>
-      <li class="link sub">
+      <li class="link sub" data-toggle="tooltip" data-placement="bottom" title="Trocar unidade">
         <i class="mdi mdi-map-marker"></i>
       </li>
-      <li class="link sub">
+      <li class="link sub" data-toggle="tooltip" data-placement="bottom" title="Suporte">
         <i class="mdi mdi-phone-classic"></i>
       </li>
-      <li class="link sub">
-        <i class="mdi mdi-bell"></i>
+      <li class="link sub" >
+        <div class="dropdown">
+          <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="mdi mdi-bell"></i>
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </div>
       </li>
+      
     </ul>
   </nav>
 </template>
@@ -42,6 +53,7 @@ export default {
     top: 0;
     left: 0;
     right: 0;
+    z-index: 100;
   }
   nav .container {
     margin: 0 auto;

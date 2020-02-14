@@ -45,13 +45,59 @@
       </div>
       <div class="row">
         <div class="col-lg-4">
-          <div class="block">
-            <PieChart/>
+          <div class="block cal">
+            <!--<PieChart/>-->
+            <vue-cal selected-date="2018-11-19"
+              default-view="month" 
+              xsmall
+              hide-view-selector
+              class="vuecal--green-theme vuecal--rounded-theme"
+              locale="pt-br"
+              :events="events">
+            </vue-cal>
           </div>
         </div>
         <div class="col-lg-8">
           <div class="block">
-            <AreaChart/>
+            <div class="">
+              <table class="table table-plans">
+                <thead>
+                  <tr>
+                    <th scope="col">Convênio</th>
+                    <th scope="col">Consulta</th>
+                    <th scope="col">Retorno</th>
+                    <th scope="col">Exame</th>
+                    <th scope="col">Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Unimed</th>
+                    <td>90</td>
+                    <td>3</td>
+                    <td>15</td>
+                    <td>108</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Amil Planos</th>
+                    <td>44</td>
+                    <td>3</td>
+                    <td>8</td>
+                    <td>55</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">IPASGO</th>
+                    <td>13</td>
+                    <td>3</td>
+                    <td>5</td>
+                    <td>23</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div style="padding-top: 15px">
+              <BarChart :height="218"/>
+            </div>
           </div>
         </div>
       </div>
@@ -61,7 +107,6 @@
             <div>
               <h3>Agendamentos para hoje</h3>
             </div>
-
             <table class="table table-striped table-hover">
               <thead>
                 <tr>
@@ -77,10 +122,10 @@
                   <th scope="row">
                     <div class="avatar" :style="'background-image: url(' + item.photo + ');'"></div>
                   </th>
-                  <td style="vertical-align: middle;">{{item.name}}</td>
-                  <td style="vertical-align: middle;">{{item.doctor}}</td>
-                  <td style="vertical-align: middle;">{{item.time}}</td>
-                  <td style="vertical-align: middle;">
+                  <td>{{item.name}}</td>
+                  <td>{{item.doctor}}</td>
+                  <td>{{item.time}}</td>
+                  <td>
                     <span class="badge" v-bind:class="item.status == 'Confirmado' ? 'badge-primary' : item.status == 'Faltante' ? 'badge-danger' : 'badge-secondary'">{{item.status.toUpperCase()}}</span>
                   </td>
                 </tr>
@@ -96,37 +141,64 @@
   </div>
 </template>
 <script>
-import PieChart from "../components/PieChart.vue";
-import AreaChart from "../components/AreaChart.vue";
+//import PieChart from "../components/PieChart.vue";
+import BarChart from "../components/BarChart.vue";
+import VueCal from 'vue-cal'
+import '../../public/css/vuecal-custom.css'
+import 'vue-cal/dist/i18n/pt-br.js'
 export default {
   name: 'home',
   components: {
-    PieChart,
-    AreaChart
+    //PieChart,
+    BarChart,
+    VueCal
   },
   data: () => ({
     list: [
       {
-        "photo": "https://lh3.googleusercontent.com/proxy/nl3kuku29MfMKDCsaqCK5iIoF7vlYIyNAB3D-oICQVHZ9eH-eaq8zgQ3LrmaQxDdz7F3PSLsaL1idGSEnhwKvApClsQZj4ndy9yiuOPMg8qpNXQ",
+        "photo": "https://www.ahbvlp.pt/wp-content/uploads/2018/07/avatar.jpg",
         "name": "Alex Murphy",
         "doctor": "Badan Palhares",
         "time": "14:15",
         "status": "Confirmado",
       },
       {
-        "photo": "https://pbs.twimg.com/profile_images/708429627304206336/bOJqWIUL_400x400.jpg",
+        "photo": "https://www.ahbvlp.pt/wp-content/uploads/2018/07/avatar.jpg",
         "name": "Genghis Khan",
         "doctor": "Badan Palhares",
         "time": "12:00",
         "status": "Pendente",
       },
       {
-        "photo": "https://pbs.twimg.com/profile_images/3532733618/816131e8d4d420da11217a6b59826811.jpeg",
+        "photo": "https://www.ahbvlp.pt/wp-content/uploads/2018/07/avatar.jpg",
         "name": "Tutankhamon",
         "doctor": "Badan Palhares",
         "time": "08:00",
         "status": "Faltante",
       },
+    ],
+    events: [
+      {
+        start: '2018-11-21',
+        end: '2018-11-21',
+        title: 'Need to go shopping',
+        content: '<i class="v-icon material-icons">shopping_cart</i>',
+        class: 'leisure'
+      },
+      {
+        start: '2018-11-21',
+        end: '2018-11-21',
+        title: 'Golf with John',
+        content: '<i class="v-icon material-icons">golf_course</i>',
+        class: 'sport'
+      },
+      {
+        start: '2018-11-22',
+        end: '2018-11-22',
+        title: 'Dad\'s birthday!',
+        content: '<i class="v-icon material-icons">cake</i>',
+        class: 'sport'
+      }
     ]
   })
 }
@@ -181,5 +253,16 @@ export default {
   .table {
     margin-top: 30px;
     margin-bottom: 30px
+  }
+  .cal {
+    height: 492px;
+    padding: 15px
+  }
+  .table-plans {
+    margin: 0px;
+    
+  }
+  .table tr td, .table tr th {
+    vertical-align: middle;
   }
 </style>

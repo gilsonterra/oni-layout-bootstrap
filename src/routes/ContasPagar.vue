@@ -18,7 +18,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-12 scroll">
+        <div class="col-sm-12">
           <div class="tableview">
             <table class="table table-striped table-hover">
               <thead>
@@ -59,6 +59,21 @@ export default {
         "nome": "Marcus Felix",
         "vencimento": "20/02/2020",
         "total": 1099,
+      },
+      {
+        "nome": "Genghis Khan",
+        "vencimento": "12/08/2020",
+        "total": 15487,
+      },
+      {
+        "nome": "Tutankhamon",
+        "vencimento": "02/04/2020",
+        "total": 25789,
+      },
+      {
+        "nome": "Alex Murphy",
+        "vencimento": "02/04/2020",
+        "total": 94785,
       },
     ]
   }),

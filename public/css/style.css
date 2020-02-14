@@ -33,12 +33,6 @@ a, a:hover, a:link, a:active, a:visited {
   margin-right: 8px;
   font-size: 1.6em
 }
-.form .checkbox .mdi.active {
-  color: rgb(0, 113, 47);
-}
-.form .checkbox .mdi {
-  color: #999
-}
 
 .form .help {
   color: #999;

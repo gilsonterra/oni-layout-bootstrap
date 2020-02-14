@@ -149,7 +149,7 @@ export default {
   .overlay {
     background-color: rgba(0,0,0,0.3);
     position: fixed;
-    z-index: 1;
+    z-index: 10;
     top: 60px;
     left: -330px;
     bottom: 0;
@@ -163,7 +163,7 @@ export default {
   }
   nav {
     position: fixed;
-    z-index: 1;
+    z-index: 11;
     top: 60px;
     left: -330px;
     bottom: 0;

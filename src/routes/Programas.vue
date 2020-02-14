@@ -2,10 +2,10 @@
   <div class="view">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-sm-4 col-lg-3 list scroll">
+        <div class="col-md-4 col-lg-4 col-xl-3 list scroll">
           <List :list="list" @on-selected="onSelected"/>
         </div>
-        <div class="col-sm-8 col-lg-9 scroll">
+        <div class="col-md-8 col-lg-8 col-xl-9 scroll">
           <div class="container-fluid" v-if="selected != null">
             <div class="row">
               <div class="col-md-12">
@@ -62,16 +62,13 @@
                 <div class="form-group">
                   <label>Opções</label>
                   <div class="checkbox">
-                    <i class="mdi mdi-checkbox-marked-outline active"></i>
-                    <span>Mesclar perfil</span>
+                    <Checkbox :active="true"/>
                   </div>
                   <div class="checkbox">
-                    <i class="mdi mdi-checkbox-blank-outline"></i>
-                    <span>Auditoria específica</span>
+                    <Checkbox :active="false"/>
                   </div>
                   <div class="checkbox">
-                    <i class="mdi mdi-checkbox-blank-outline"></i>
-                    <span>Ícone no desktop</span>
+                    <Checkbox :active="false"/>
                   </div>
                 </div>
               </div>
@@ -96,10 +93,12 @@
 </template>
 <script>
 import List from '../components/List'
+import Checkbox from '../components/Checkbox'
 export default {
   name: "home",
   components: {
-    List
+    List,
+    Checkbox
   },
   data: () => ({
     mode: "dados",
