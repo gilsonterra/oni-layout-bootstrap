@@ -60,37 +60,37 @@
         <div class="col-lg-8">
           <div class="block">
             <div class="">
-              <table class="table table-plans">
+              <table class="table table-plans table-borderless">
                 <thead>
                   <tr>
                     <th scope="col">Convênio</th>
-                    <th scope="col">Consulta</th>
-                    <th scope="col">Retorno</th>
-                    <th scope="col">Exame</th>
-                    <th scope="col">Total</th>
+                    <th scope="col" class="text-center"><i class="mdi mdi-checkbox-blank-circle" style="color: #6610f2"></i> Consulta</th>
+                    <th scope="col" class="text-center"><i class="mdi mdi-checkbox-blank-circle" style="color: #17a2b8"></i> Retorno</th>
+                    <th scope="col" class="text-center"><i class="mdi mdi-checkbox-blank-circle" style="color: #00c853"></i> Exame</th>
+                    <th scope="col" class="text-center"><i class="mdi mdi-checkbox-blank-circle" style="color: #6610f2"></i> Total</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <th scope="row">Unimed</th>
-                    <td>90</td>
-                    <td>3</td>
-                    <td>15</td>
-                    <td>108</td>
+                    <td class="text-center">90</td>
+                    <td class="text-center">3</td>
+                    <td class="text-center">15</td>
+                    <td class="text-center">108</td>
                   </tr>
                   <tr>
-                    <th scope="row">Amil Planos</th>
-                    <td>44</td>
-                    <td>3</td>
-                    <td>8</td>
-                    <td>55</td>
+                    <th scope="row"> Amil Planos</th>
+                    <td class="text-center">44</td>
+                    <td class="text-center">3</td>
+                    <td class="text-center">8</td>
+                    <td class="text-center">55</td>
                   </tr>
                   <tr>
-                    <th scope="row">IPASGO</th>
-                    <td>13</td>
-                    <td>3</td>
-                    <td>5</td>
-                    <td>23</td>
+                    <th scope="row"> IPASGO</th>
+                    <td class="text-center">13</td>
+                    <td class="text-center">3</td>
+                    <td class="text-center">5</td>
+                    <td class="text-center">23</td>
                   </tr>
                 </tbody>
               </table>
@@ -260,7 +260,6 @@ export default {
   }
   .table-plans {
     margin: 0px;
-    
   }
   .table tr td, .table tr th {
     vertical-align: middle;
