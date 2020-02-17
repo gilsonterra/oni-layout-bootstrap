@@ -8,7 +8,6 @@
             <h3>Agendados</h3>
             <div class="number">
               <big>45</big>
-              <small class="text-primary">+25%</small>
             </div>
           </div>
         </div>
@@ -18,7 +17,6 @@
             <h3>Confirmados</h3>
             <div class="number">
               <big>40</big>
-              <small class="text-danger">-10%</small>
             </div>
           </div>
         </div>
@@ -28,7 +26,6 @@
             <h3>Atendidos</h3>
             <div class="number">
               <big>15</big>
-              <small class="text-danger">-10%</small>
             </div>
           </div>
         </div>
@@ -38,7 +35,6 @@
             <h3>Faltantes</h3>
             <div class="number">
               <big>3</big>
-              <small class="text-primary">2%</small>
             </div>
           </div>
         </div>
@@ -59,49 +55,55 @@
         </div>
         <div class="col-lg-8">
           <div class="block">
-            <div class="">
-              <table class="table table-plans table-borderless">
-                <thead>
-                  <tr>
-                    <th scope="col">Convênio</th>
-                    <th scope="col" class="text-center"><i class="mdi mdi-checkbox-blank-circle" style="color: #6610f2"></i> Consulta</th>
-                    <th scope="col" class="text-center"><i class="mdi mdi-checkbox-blank-circle" style="color: #17a2b8"></i> Retorno</th>
-                    <th scope="col" class="text-center"><i class="mdi mdi-checkbox-blank-circle" style="color: #00c853"></i> Exame</th>
-                    <th scope="col" class="text-center"><i class="mdi mdi-checkbox-blank-circle" style="color: #6610f2"></i> Total</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">Unimed</th>
-                    <td class="text-center">90</td>
-                    <td class="text-center">3</td>
-                    <td class="text-center">15</td>
-                    <td class="text-center">108</td>
-                  </tr>
-                  <tr>
-                    <th scope="row"> Amil Planos</th>
-                    <td class="text-center">44</td>
-                    <td class="text-center">3</td>
-                    <td class="text-center">8</td>
-                    <td class="text-center">55</td>
-                  </tr>
-                  <tr>
-                    <th scope="row"> IPASGO</th>
-                    <td class="text-center">13</td>
-                    <td class="text-center">3</td>
-                    <td class="text-center">5</td>
-                    <td class="text-center">23</td>
-                  </tr>
-                </tbody>
-              </table>
+            <div>
+              <div class="switch">
+                <small>TABLELA</small>
+                <Switches v-model="graph" color="green" theme="bulma"></Switches>
+                <small>GRÁFICO</small>
+              </div>
+              <h3>Convênios</h3>
             </div>
-            <div style="padding-top: 15px">
-              <BarChart :height="218"/>
+            <table class="table table-plans table-borderless" style="height: 375px" v-if="!graph">
+              <thead>
+                <tr>
+                  <th scope="col">Convênio</th>
+                  <th scope="col" class="text-center"><i class="mdi mdi-checkbox-blank-circle" style="color: #20c997"></i> Consulta</th>
+                  <th scope="col" class="text-center"><i class="mdi mdi-checkbox-blank-circle" style="color: #17a2b8"></i> Retorno</th>
+                  <th scope="col" class="text-center"><i class="mdi mdi-checkbox-blank-circle" style="color: #00c853"></i> Exame</th>
+                  <th scope="col" class="text-center"><i class="mdi mdi-checkbox-blank-circle" style="color: #6610f2"></i> Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Unimed</th>
+                  <td class="text-center">90</td>
+                  <td class="text-center">3</td>
+                  <td class="text-center">15</td>
+                  <td class="text-center">108</td>
+                </tr>
+                <tr>
+                  <th scope="row"> Amil Planos</th>
+                  <td class="text-center">44</td>
+                  <td class="text-center">3</td>
+                  <td class="text-center">8</td>
+                  <td class="text-center">55</td>
+                </tr>
+                <tr>
+                  <th scope="row"> IPASGO</th>
+                  <td class="text-center">13</td>
+                  <td class="text-center">3</td>
+                  <td class="text-center">5</td>
+                  <td class="text-center">23</td>
+                </tr>
+              </tbody>
+            </table>
+            <div style="padding-top: 15px" v-if="graph">
+              <BarChart :height="390"/>
             </div>
           </div>
         </div>
       </div>
-      <div class="row">
+      <!--<div class="row">
         <div class="col-lg-12">
           <div class="block">
             <div>
@@ -133,7 +135,7 @@
             </table>
           </div>
         </div>
-      </div>
+      </div>-->
       <div class="row">
         <br/>
       </div>
@@ -142,6 +144,7 @@
 </template>
 <script>
 //import PieChart from "../components/PieChart.vue";
+import Switches from 'vue-switches';
 import BarChart from "../components/BarChart.vue";
 import VueCal from 'vue-cal'
 import '../../public/css/vuecal-custom.css'
@@ -150,10 +153,12 @@ export default {
   name: 'home',
   components: {
     //PieChart,
+    Switches,
     BarChart,
     VueCal
   },
   data: () => ({
+    graph: false,
     list: [
       {
         "photo": "https://www.ahbvlp.pt/wp-content/uploads/2018/07/avatar.jpg",
@@ -225,6 +230,7 @@ export default {
   }
   h3 {
     margin: 0px;
+    font-size: 1.5em;
     color: #00000080;
   }
   .block {
@@ -237,7 +243,7 @@ export default {
     padding: 30px 20px 5px 30px
   }
   .block big {
-    font-size: 4em;
+    font-size: 3.5em;
     font-weight: 900;
     margin-right: 15px;
     color: #0000009e;
@@ -259,9 +265,34 @@ export default {
     padding: 15px
   }
   .table-plans {
-    margin: 0px;
+    margin-bottom: 15px;
+    margin-top: 15px
   }
   .table tr td, .table tr th {
     vertical-align: middle;
+  }
+  .red {
+    background-color: #dc354523
+  }
+  .blue {
+    background-color: #007bff2e
+  }
+  .purple {
+    background-color: #6f42c12e
+  }
+  .green {
+    background-color: #00c8532e
+  }
+  .switch {
+    float: right;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .switch small {
+    color: #999999;
+    padding: 0px 15px;
+    position: relative;
+    top: -3px;
   }
 </style>

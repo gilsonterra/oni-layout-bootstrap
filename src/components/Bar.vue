@@ -32,7 +32,9 @@
           </div>
         </div>
       </li>
-      
+      <li>
+        <i class="avatar" style="background-image: url(https://i.pinimg.com/originals/7c/c7/a6/7cc7a630624d20f7797cb4c8e93c09c1.png)"></i>
+      </li>
     </ul>
   </nav>
 </template>
@@ -87,6 +89,9 @@ export default {
   .mdi-menu {
     font-size: 1.8em
   }
+  .mdi-magnify {
+    color: #CCC
+  }
   .flex {
     display: flex;
     flex: 1
@@ -95,6 +100,13 @@ export default {
     padding: 15px;
     font-size: 1em;
     border: none
+  }
+  .avatar {
+    background-size: cover;
+    background-color: #CCC;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%
   }
   
 </style>

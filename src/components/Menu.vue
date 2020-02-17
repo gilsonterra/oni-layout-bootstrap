@@ -1,15 +1,8 @@
 <template>
   <div v-bind:class="opened ? 'opened' : ''" class="canvas">
     <div class="overlay" @click="$emit('change-menu')"></div>
-    <nav>
+    <perfect-scrollbar class="nav">
       <ul>
-        <li>
-          <div>
-            <i><i class="avatar"></i></i>
-            <p class="head">Marcus Felix</p>
-          </div>
-        </li>
-        <li><br/></li>
         <li v-for="(item, index) in menu" :key="index">
           <router-link :to="{ name: item.route, params: {}}">
             <div @click="item.active = !item.active">
@@ -41,13 +34,18 @@
           </ul>
         </li>
       </ul>
-    </nav>
+    </perfect-scrollbar>
   </div>
 </template>
 
 <script>
+import { PerfectScrollbar } from 'vue2-perfect-scrollbar'
+
 export default {
   name: 'Menu',
+  components: {
+    PerfectScrollbar
+  },
   props: {
     opened: Boolean
   },
@@ -144,7 +142,7 @@ export default {
   })
 }
 </script>
-
+<style src="vue2-perfect-scrollbar/dist/vue2-perfect-scrollbar.css"/>
 <style scoped>
   .overlay {
     background-color: rgba(0,0,0,0.3);
@@ -161,7 +159,8 @@ export default {
     left: 0;
     opacity: 1;
   }
-  nav {
+  .nav {
+    width: 270px;
     position: fixed;
     z-index: 11;
     top: 60px;
@@ -171,10 +170,9 @@ export default {
     color: #dcedc8;
     overflow: hidden;
     padding: 16px 0px 0px 0px;
-    overflow-y: auto;
     transition: left 150ms ease-in-out;
   }
-  .opened nav {
+  .opened .nav {
     left: 0
   }
   ul {

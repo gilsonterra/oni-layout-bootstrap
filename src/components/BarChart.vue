@@ -24,7 +24,7 @@ export default {
           },
           {
             label: "Consultas",
-            backgroundColor: "#6f42c1",
+            backgroundColor: "#20c997",
             data: [90, 44, 13]
           },
           {

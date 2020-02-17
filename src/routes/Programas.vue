@@ -2,8 +2,8 @@
   <div class="view">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-4 col-lg-4 col-xl-3 list scroll">
-          <List :list="list" @on-selected="onSelected"/>
+        <div class="col-md-4 col-lg-4 col-xl-3 list">
+          <List :list="list" @on-selected="onSelected" :filter="'Módulos'"/>
         </div>
         <div class="col-md-8 col-lg-8 col-xl-9 scroll">
           <div class="container-fluid" v-if="selected != null">
@@ -107,7 +107,7 @@ export default {
       {
         "name": "Acesso a dados da base externa",
         "url": "/dadosbaseexterna/",
-        "active": false
+        "active": true
       },
       {
         "name": "Acesso de usuário a profissionais",
@@ -135,6 +135,10 @@ export default {
   padding-top: 60px;
   height: 100vh;
   background-color: #ededed;
+}
+.list {
+  height: calc(100vh - 60px);
+  padding: 0px
 }
 .scroll {
   overflow-y: auto;

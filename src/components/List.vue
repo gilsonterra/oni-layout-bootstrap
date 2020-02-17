@@ -1,30 +1,49 @@
 <template>
-  <nav>
+  <div class="list">
     <div class="search">
       <input type="text" placeholder="Busca" />
     </div>
-    <a @click="$emit('on-selected', item)" class="list-item" v-bind:class="item.active ? 'active' : ''" v-for="(item, index) in list" :key="index">
-      <!--<i class="mdi mdi-pencil"></i>-->
-      <div>
-        <p>{{item.name}}</p>
-        <small>{{item.url}}</small>
+    <perfect-scrollbar class="list">
+      <a @click="$emit('on-selected', item)" class="list-item" v-bind:class="item.active ? 'active' : ''" v-for="(item, index) in list" :key="index">
+        <!--<i class="mdi mdi-pencil"></i>-->
+        <div>
+          <p>{{item.name}}</p>
+          <small>{{item.url}}</small>
+        </div>
+      </a>
+    </perfect-scrollbar>
+    <div class="filters">
+      <div class="dropdown">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{filter}}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
       </div>
-    </a>
-  </nav>
+    </div>
+  </div>
 </template>
 
 <script>
+import { PerfectScrollbar } from 'vue2-perfect-scrollbar'
 export default {
   name: 'Menu',
+  components: {
+    PerfectScrollbar
+  },
   props: {
-    list: Array
+    list: Array,
+    filter: String
   },
 }
 </script>
 
 <style scoped>
 .list {
-  padding: 0px;
+  height: calc(100vh - 206px);
 }
 .list-item {
   display: flex;
@@ -51,7 +70,7 @@ export default {
   background-color: rgba(0,0,0,.05)
 }
 .list-item.active {
-  background-color: #00c853;
+  background-color: #868e96;
   color: #FFF !important
 }
 .list-item p {
@@ -76,4 +95,11 @@ export default {
   border: none;
   background-color: rgba(0,0,0,.1)
 }
+.filters {
+  padding: 16px;
+}
+.filters .mdi {
+  font-size: 1.4em
+}
 </style>
+<style src="vue2-perfect-scrollbar/dist/vue2-perfect-scrollbar.css"/>
