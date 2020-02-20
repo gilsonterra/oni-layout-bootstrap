@@ -41,6 +41,38 @@
       </div>
       <div class="row">
         <div class="col-lg-4">
+          <div class="block text grey">
+            <h5>Pacientes</h5>
+            <h3>Atendidos</h3>
+            <div class="number">
+              <big>45</big>
+              <small class="text-primary">+15%</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="block text grey">
+            <h5>Pacientes</h5>
+            <h3>Cancelados</h3>
+            <div class="number">
+              <big>40</big>
+              <small class="text-danger">-15%</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="block text grey">
+            <h5>Pacientes</h5>
+            <h3>Bloqueados</h3>
+            <div class="number">
+              <big>15</big>
+              <small class="text-danger">-15%</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4">
           <div class="block cal">
             <!--<PieChart/>-->
             <vue-cal selected-date="2018-11-19"
@@ -117,35 +149,6 @@
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="block text transparent">
-            <h5>Pacientes</h5>
-            <h3>Atendidos</h3>
-            <div class="number">
-              <big>45</big>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="block text transparent">
-            <h5>Pacientes</h5>
-            <h3>Cancelados</h3>
-            <div class="number">
-              <big>40</big>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="block text transparent">
-            <h5>Pacientes</h5>
-            <h3>Bloqueados</h3>
-            <div class="number">
-              <big>15</big>
-            </div>
-          </div>
-        </div>
-      </div>
       <div class="row"></div>
     </div>
   </div>
@@ -212,6 +215,7 @@ export default {
     text-transform: uppercase;
     font-size: 0.9em;
     color: #00000080;
+    margin-bottom: 10px;
   }
   h3 {
     margin: 0px;
@@ -225,7 +229,7 @@ export default {
     border-radius: 6px
   }
   .text {
-    padding: 30px 20px 5px 30px
+    padding: 20px 15px 0px 20px
   }
   .block big {
     font-size: 3em;
@@ -268,8 +272,8 @@ export default {
   .green {
     background-color: #00c8532e
   }
-  .transparent {
-    background-color: transparent
+  .grey {
+    background-color: #DDD
   }
   .switch {
     float: right;
