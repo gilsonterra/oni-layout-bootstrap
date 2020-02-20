@@ -3,45 +3,25 @@
     <div class="container-fluid scroll">
       <div class="row">
         <div class="col-lg-3">
-          <div class="block text green">
+          <div class="block info text green">
             <h5>Agendamentos</h5>
             <h3>Agendados</h3>
-            <div class="number">
-              <big>45</big>
+            <div class="rows">
+              <div class="cols">
+                <div class="number">
+                  <big>47</big>
+                </div>
+              </div>
+              <div class="cols">
+                <div>
+                  <p>23 Agendados, 2 Encaixes, 1 Transferência, 11 Retornos</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
         <div class="col-lg-3">
-          <div class="block text purple">
-            <h5>Agendamentos</h5>
-            <h3>Transferidos</h3>
-            <div class="number">
-              <big>40</big>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3">
-          <div class="block text blue">
-            <h5>Agendamentos</h5>
-            <h3>Encaixes</h3>
-            <div class="number">
-              <big>15</big>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3">
-          <div class="block text red">
-            <h5>Agendamentos</h5>
-            <h3>Retornos</h3>
-            <div class="number">
-              <big>3</big>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="block text grey">
+          <div class="block info text blue">
             <h5>Pacientes</h5>
             <h3>Atendidos</h3>
             <div class="number">
@@ -50,8 +30,8 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-4">
-          <div class="block text grey">
+        <div class="col-lg-3">
+          <div class="block info text purple">
             <h5>Pacientes</h5>
             <h3>Cancelados</h3>
             <div class="number">
@@ -60,8 +40,8 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-4">
-          <div class="block text grey">
+        <div class="col-lg-3">
+          <div class="block info text red">
             <h5>Pacientes</h5>
             <h3>Bloqueados</h3>
             <div class="number">
@@ -71,6 +51,7 @@
           </div>
         </div>
       </div>
+      
       <div class="row">
         <div class="col-lg-4">
           <div class="block cal">
@@ -228,6 +209,14 @@ export default {
     border: 1px solid #00000020;
     border-radius: 6px
   }
+  .block.info {
+    height: 160px;
+  }
+  .block .rows {
+    display: flex;
+    flex-direction: row;
+    align-items: center
+  }
   .text {
     padding: 20px 15px 0px 20px
   }
@@ -241,6 +230,12 @@ export default {
     display: flex;
     flex-direction: row;
     align-items: center
+  }
+  .block .cols p {
+    margin-bottom: 3px;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    color: #0000009e;
   }
   .block .number small {
     font-size: 1.3em;
