@@ -14,7 +14,10 @@
               </div>
               <div class="cols">
                 <div>
-                  <p>23 Agendados, 2 Encaixes, 1 Transferência, 11 Retornos</p>
+                  <p>23 Agendados</p>
+                  <p>2 Encaixes</p>
+                  <p>1 Transferência</p>
+                  <p>11 Retornos</p>
                 </div>
               </div>
             </div>
@@ -215,7 +218,8 @@ export default {
   .block .rows {
     display: flex;
     flex-direction: row;
-    align-items: center
+    align-items: center;
+    margin-top: 6px
   }
   .text {
     padding: 20px 15px 0px 20px
@@ -232,7 +236,7 @@ export default {
     align-items: center
   }
   .block .cols p {
-    margin-bottom: 3px;
+    margin-bottom: -3px;
     font-size: 0.8em;
     text-transform: uppercase;
     color: #0000009e;
